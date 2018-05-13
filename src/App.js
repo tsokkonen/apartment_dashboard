@@ -3,6 +3,7 @@ import BrushableScatterplot from "./BrushableScatterplot"
 import Barchart from "./Barchart"
 import apartmentdata from "./data/apartmentdata.json"
 import { typeColors } from "./settings/color"
+import "./flexboxgrid.min.css"
 import "./App.css"
 
 function freqs(data) {
@@ -25,16 +26,19 @@ class App extends Component {
     return (
       <div className="App">
         <div className="row">
-          <BrushableScatterplot
-            data={apartmentdata} color={typeColors}
-          />
+          <div className="col-xs-6">
+            <div className="box">
+              <BrushableScatterplot
+                data={apartmentdata} color={typeColors}
+              />
+            </div>
+          </div>
+          <div className="col-xs-6">
+            <Barchart
+              data={numberSoldByRegion}
+              />
+          </div>
         </div>
-        <div className="row">
-          <Barchart
-            data={numberSoldByRegion}
-          />
-        </div>
-        <div className="row">Chart 3</div>
       </div>
     )
   }
